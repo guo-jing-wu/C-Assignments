@@ -1,0 +1,36 @@
+#include "my_malloc.h"
+
+int main(int argc, char** argv) 
+{       
+  my_malloc(HEAP_SIZE);
+  int i = 0;
+  char *sentence = "Oh, I'm a goofy goober, yeah! ";
+   printf("Sentence: %s", sentence);
+   char *p = (char*)my_malloc(500);
+   char *q = (char*)my_malloc(500);
+   for(i=0; i<strlen(sentence); i++){
+     p[i] = sentence[i];
+   }
+   printf("\n\np is : %s", p);
+   printf("location of p %x\n",p);
+   printf("location of q %x\n",q);
+   my_free((void*)p);
+   p = my_malloc(0);
+   if(p==NULL){
+     printf("handles zero input\n");
+   }
+   p = my_malloc(1000000);
+   if(p == NULL){
+     if(errno == ENOMEM){
+       printf("handles error condition\n");
+     }
+   }
+   my_free((void*)q);
+   p = (char*)my_malloc(600);
+   q = (char*)my_malloc(500);
+   printf("location of p %x\n",p );
+   printf("location of q %x\n",q );
+   my_free((void*)q);
+   my_free((void*)p);
+   return 0;
+}

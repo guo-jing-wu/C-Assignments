@@ -1,0 +1,43 @@
+#include "strlib6.h"
+
+char *center(char *s, int width){
+  char *c;
+  int len = 0;
+  int i = 0;
+  int j = 0; 
+  while (*s != '\0'){
+    s++;
+    len++;
+  }
+  s = s-len;
+  if((c = (char*)malloc(width+1)) == NULL){
+    return NULL;
+  }
+  char *p = c;
+  if (width <= len){  
+    while (*s != '\0'){
+      *c = *s;
+      s++;
+      c++;
+    }
+    *c = '\0';
+    return p;
+  }
+  i = (width-len);
+  i = i/2;
+  while (j < i){
+    c[j] = ' ';
+    j++;
+  }
+  while (j < i+len){
+    c[j] = *s;
+    j++;
+    s++;
+  }
+  while (j < width){
+    c[j] = ' ';
+    j++;
+  }
+  c[j] = '\0';
+  return p;
+}

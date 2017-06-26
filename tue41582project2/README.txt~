@@ -1,0 +1,45 @@
+                                   Shell.c
+SYNOPSIS
+-----------
+The Shell.c is an UNIX shell program. It is used to understand how child
+processes are created to perform large-grained work and how the parent process
+can follow up on a child process's work. Shell.c can utilize the UNIX commands
+such as ls, more, and wc. Shell.c can also perform I/Oredirection and piping
+using "<", ">", and "|". It is able to run a process in the background without
+having to wait for the child process to terminate.
+
+DESCRIPTION
+-----------
+The main function will be in an infinite loop so the program will continue
+until the user requests to exit out of the shell. It creates a prompt for the
+user to type an input into the command line. The input is then parse using the
+parse function and check if the user type "exit" to exit out of the infinite
+loop and end the program. If not, the program will execute the input command by
+using the execute function.
+
+The parse function is used to go through the user's input and convert it into a
+C-String. It will then put each C-String into an array of character pointers.
+This array of character pointers will be used for the execute function.
+
+The execute function is used to 
+
+
+EXAMPLES
+-----------
+
+The driver.c file is used to explain how the my_malloc and my_free function
+works. The sentence is the input from the user. It creates two heap called p
+and q. Then, each character from the sentence is added into
+the heap p. When the driver prints p, it is the same sentence and when the
+location of q is the next address after p. For this case, the sentence is 0x20
+bigger. Next is to test when the argument for my_malloc is zero, first is to
+free p so it no longer hold the sentence and then call it again but with 0 as
+the argument for my_malloc this time. It will print "Zero Input" since nothing
+is in p. Next example is to test when the argument is too big, put in 1000000
+as the argument for my_malloc. It will print "Error Condition" since the size
+requested is bigger than the heap size so it cause the ENOMEM error.
+
+AUTHOR
+-----------
+
+Guo Jing Wu

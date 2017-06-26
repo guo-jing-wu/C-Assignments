@@ -1,0 +1,61 @@
+Dump of assembler code for function main:
+   0x08048e44 <+0>:     push   %ebp /*Entering main*/
+   0x08048e45 <+1>:     mov    %esp,%ebp
+   0x08048e47 <+3>:     and    $0xfffffff0,%esp
+   0x08048e4a <+6>:     sub    $0x20,%esp
+   0x08048e4d <+9>:     call   0x8048f5f <getRandomChoice> /*main.c:51 getRandomChoice();*/
+   0x08048e52 <+14>:    mov    %eax,0x1c(%esp)
+   0x08048e56 <+18>:    call   0x8048faa <printWelcome> /*main.c:52 printWelcome();*/
+   0x08048e5b <+23>:    call   0x8048e92 <beSuperficiallyFriendly> /*main.c:53 beSuperficiallyFriendly();*/
+   0x08048e60 <+28>:    mov    0x1c(%esp),%eax
+   0x08048e64 <+32>:    shl    $0x3,%eax
+   0x08048e67 <+35>:    add    $0x80eb080,%eax
+   0x08048e6c <+40>:    mov    %eax,(%esp)
+   0x08048e6f <+43>:    call   0x8048f0e <playGame> /*main.c:54 playGame();*/
+   0x08048e74 <+48>:    test   %eax,%eax /*main.c:54 if (playGame(&problems[rchoice]))*/
+   0x08048e76 <+50>:    je     0x8048e7f <main+59> /*main.c:54   if (playGame(&problems[rchoice] == 1) */
+   0x08048e78 <+52>:    call   0x8048ec4 <winner> /*main.c:55 winner();*/
+   0x08048e7d <+57>:    jmp    0x8048e8b <main+71> /*main.c:56 else*/
+   0x08048e7f <+59>:    mov    0x1c(%esp),%eax
+   0x08048e83 <+63>:    mov    %eax,(%esp)
+   0x08048e86 <+66>:    call   0x8048ee2 <loser> /*main.c:57 loser();*/
+   0x08048e8b <+71>:    mov    $0x0,%eax
+   0x08048e90 <+76>:    leave /*main.c:# Leaving main*/
+   0x08048e91 <+77>:    ret /*main.c:59 return 0;*/
+End of assembler dump.
+
+Dump of assembler code for function beSuperficiallyFriendly:
+   0x08048e92 <+0>:     push   %ebp /*Entering beSuperficiallyFriendly*/
+   0x08048e93 <+1>:     mov    %esp,%ebp
+   0x08048e95 <+3>:     sub    $0x28,%esp
+   0x08048e98 <+6>:     movl   $0x80beba5,(%esp)
+   0x08048e9f <+13>:    call   0x804f800 <printf> /*beSuperficiallyFriendly.c:65 printf("What's your name ? ");*/
+   0x08048ea4 <+18>:    lea    -0x18(%ebp),%eax
+   0x08048ea7 <+21>:    mov    %eax,(%esp)
+   0x08048eaa <+24>:    call   0x804fd60 <gets> /*beSuperficiallyFriendly.c:66 gets(name);*/
+   0x08048eaf <+29>:    lea    -0x18(%ebp),%eax
+   0x08048eb2 <+32>:    mov    %eax,0x4(%esp)
+   0x08048eb6 <+36>:    movl   $0x80bebb9,(%esp)
+   0x08048ebd <+43>:    call   0x804f800 <printf> /*beSuperficiallyFriendly.c:67 printf("Hi, %s.  Get ready to play.\n", name);*/
+   0x08048ec2 <+48>:    leave /*Leaving beSuperficiallyFriendly*/
+   0x08048ec3 <+49>:    ret /*return void*/
+End of assembler dump.
+
+Address          Value              Comment
+0xbffff420     name[0]          location where name[0] is stored
+...                                            
+0xbffff438     0xbffff468     location where previous ebp is stored
+0xbffff43c     0x08048e60   return address in main() function after call to the beSuperficiallyFriendly() function
+
+When you're in the beSuperficiallyFriendly function, what is the return address stored on the stack?
+0x08048e60
+When you're in the beSuperficiallyFriendly function, at what address is the return address stored?
+0xbffff43c
+At what address is name[0] in beSuperficiallyFriendly?
+0xbffff420
+What is the address of the winner() function?
+0x8048ec4
+What is the fundamental problem with gets() that makes the attack possible?
+gets function does not check for buffer length and always results in a vulnerability.
+What are some other functions in string.h that have the same vulnerability? For each of these functions, are there alternatives that don't have the same vulnerability?
+strcpy, strcat and strcmp function. Yes, strncpy strncmp and strncat function.

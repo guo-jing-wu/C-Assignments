@@ -1,0 +1,17 @@
+#include "strlib6.h"
+
+char *find_ptr(char *s, char c){
+  int index = 0;
+  char *p = s;
+  while (*s != '/0'){
+    if (*s == c){
+      p = p+index;
+      return p;
+    }
+    else {
+      index++;
+      s++;
+    }
+  }
+  return NULL;
+}

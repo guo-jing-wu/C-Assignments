@@ -1,0 +1,51 @@
+Dump of assembler code for function main:
+   0x08048e44 <+0>:     push   %ebp /**/
+   0x08048e45 <+1>:     mov    %esp,%ebp
+   0x08048e47 <+3>:     and    $0xfffffff0,%esp
+   0x08048e4a <+6>:     sub    $0x20,%esp
+   0x08048e4d <+9>:     call   0x8048f5f <getRandomChoice>
+   0x08048e52 <+14>:    mov    %eax,0x1c(%esp)
+   0x08048e56 <+18>:    call   0x8048faa <printWelcome>
+   0x08048e5b <+23>:    call   0x8048e92 <beSuperficiallyFriendly>
+   0x08048e60 <+28>:    mov    0x1c(%esp),%eax
+   0x08048e64 <+32>:    shl    $0x3,%eax
+   0x08048e67 <+35>:    add    $0x80eb080,%eax
+   0x08048e6c <+40>:    mov    %eax,(%esp)
+   0x08048e6f <+43>:    call   0x8048f0e <playGame>
+   0x08048e74 <+48>:    test   %eax,%eax
+   0x08048e76 <+50>:    je     0x8048e7f <main+59>
+   0x08048e78 <+52>:    call   0x8048ec4 <winner>
+   0x08048e7d <+57>:    jmp    0x8048e8b <main+71>
+   0x08048e7f <+59>:    mov    0x1c(%esp),%eax
+   0x08048e83 <+63>:    mov    %eax,(%esp)
+   0x08048e86 <+66>:    call   0x8048ee2 <loser>
+   0x08048e8b <+71>:    mov    $0x0,%eax
+   0x08048e90 <+76>:    leave
+End of assembler dump.
+
+Dump of assembler code for function beSuperficiallyFriendly:
+   0x08048e92 <+0>:     push   %ebp
+   0x08048e93 <+1>:     mov    %esp,%ebp
+   0x08048e95 <+3>:     sub    $0x28,%esp
+   0x08048e98 <+6>:     movl   $0x80beba5,(%esp)
+   0x08048e9f <+13>:    call   0x804f800 <printf>
+   0x08048ea4 <+18>:    lea    -0x18(%ebp),%eax
+   0x08048ea7 <+21>:    mov    %eax,(%esp)
+   0x08048eaa <+24>:    call   0x804fd60 <gets>
+   0x08048eaf <+29>:    lea    -0x18(%ebp),%eax
+   0x08048eb2 <+32>:    mov    %eax,0x4(%esp)
+   0x08048eb6 <+36>:    movl   $0x80bebb9,(%esp)
+   0x08048ebd <+43>:    call   0x804f800 <printf>
+   0x08048ec2 <+48>:    leave
+   0x08048ec3 <+49>:    ret
+End of assembler dump.
+
+When you're in the beSuperficiallyFriendly function, what is the return address stored on the stack?
+
+When you're in the beSuperficiallyFriendly function, at what address is the return address stored?
+
+At what address is guess[0] in beSuperficiallyFriendly?
+
+What is the address of the winner() function?
+
+What is the fundamental problem with gets() that makes the attack possible?
